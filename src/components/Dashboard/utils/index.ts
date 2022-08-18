@@ -1,0 +1,1 @@
+export { doubleCardsList } from './doubleCardsList';

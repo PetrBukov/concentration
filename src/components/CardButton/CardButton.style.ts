@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const StyledCard = styled.button`
+export const StyledCardButton = styled.button`
   border: none;
   padding: 0;
   background-color: transparent;

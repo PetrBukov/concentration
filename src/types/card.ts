@@ -1,7 +1,10 @@
+export type CardTitle = string;
+export type CardID = string;
+
 export type Card = {
-  id: string;
+  id: CardID;
   front: string;
-  title: string;
+  title: CardTitle;
 };
 
 export type CardsList = Array<Card>;

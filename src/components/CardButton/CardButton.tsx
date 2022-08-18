@@ -4,10 +4,21 @@ import { StyledCardButton } from './CardButton.style';
 
 type CardButtonProps = Pick<Card, 'front' | 'id'> & {
   isActive: boolean;
+  isResolved: boolean;
   toggleCard: (cardID: CardID) => void;
 };
 
-export const CardButton: React.FC<CardButtonProps> = ({ id, front, isActive, toggleCard }) => {
+export const CardButton: React.FC<CardButtonProps> = ({
+  id,
+  front,
+  isActive,
+  isResolved,
+  toggleCard
+}) => {
+  if (isResolved) {
+    return <div />;
+  }
+
   return (
     <StyledCardButton
       className={isActive ? 'active' : ''}

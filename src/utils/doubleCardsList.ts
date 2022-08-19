@@ -1,4 +1,4 @@
-import { CardsList } from '../../../types/card';
+import { CardsList } from '../types/card';
 
 export const doubleCardsList = (cardsList: CardsList): CardsList => {
   const newCardsList = cardsList.map((card) => ({

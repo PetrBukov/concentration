@@ -8,7 +8,7 @@ export const StyledCardButton = styled.button`
   /* flip styles */
   perspective: 1000;
 
-  &.active .flipper {
+  &.selected .flipper {
     transform: rotateY(180deg);
   }
 

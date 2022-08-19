@@ -1,73 +1,34 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { StyledDashboard } from './Dashboard.styles';
-import { TEST_CARD_ARRAY } from './constants';
-import { doubleCardsList, transformCardsListToMap } from './utils';
-import { CardID } from '../../types/card';
-import { CardButton } from '../CardButton';
+import React, { useCallback, useMemo } from 'react';
+import { Button, Scoreboard, StyledDashboard } from './Dashboard.styles';
+import { useGameCenter } from '../../providers/GameCenter';
+import { Gameboard } from '../Gameboard';
 
 export const Dashboard: React.FC = () => {
-  const cardsList = doubleCardsList(TEST_CARD_ARRAY);
-  const cardsMap = transformCardsListToMap(cardsList);
-  const [selectedCards, setSelectedCards] = useState<Set<CardID>>(new Set());
-  const [resolvedCards, setResolvedCards] = useState<Set<CardID>>(new Set());
+  const { state, dispatch } = useGameCenter();
 
-  const toggleCard = (cardID: CardID) => {
-    setSelectedCards((prevSelectedCards) => {
-      if (prevSelectedCards.size <= 1 && !prevSelectedCards.has(cardID)) {
-        const newSelectedCards = new Set(prevSelectedCards);
-        return newSelectedCards.add(cardID);
-      }
-
-      return prevSelectedCards;
-    });
-  };
-
-  const checkCurrentTurn = useCallback(
-    ([cardID1, cardID2]: Set<CardID>) => {
-      if (cardsMap.get(cardID1)?.title === cardsMap.get(cardID2)?.title) {
-        setResolvedCards((prevResolvedCards) => {
-          const newResolvedCards = new Set(prevResolvedCards);
-          newResolvedCards.add(cardID1).add(cardID2);
-
-          return newResolvedCards;
-        });
-      }
-
-      setSelectedCards(new Set());
-    },
-    [cardsMap]
-  );
+  const movesCount = useMemo(() => {
+    return state?.currentGame?.movesCount ?? '-';
+  }, [state?.currentGame?.movesCount]);
 
   const startNewGame = useCallback(() => {
-    setResolvedCards(new Set());
-  }, []);
-
-  useEffect(() => {
-    if (selectedCards.size === 2) {
-      setTimeout(() => {
-        checkCurrentTurn(selectedCards);
-      }, 1500);
-    }
-  }, [selectedCards, checkCurrentTurn]);
-
-  useEffect(() => {
-    if (resolvedCards.size === cardsMap.size) {
-      startNewGame();
-    }
-  });
+    dispatch({ type: 'createNewGame' });
+  }, [dispatch]);
 
   return (
     <StyledDashboard>
-      {cardsList.map((card) => (
-        <CardButton
-          key={card.id}
-          id={card.id}
-          isActive={selectedCards.has(card.id)}
-          isResolved={resolvedCards.has(card.id)}
-          front={card.front}
-          toggleCard={toggleCard}
-        />
-      ))}
+      <Scoreboard>
+        <h2>Game Info</h2>
+        <ul>
+          <li>
+            Moves: <span>{movesCount}</span>
+          </li>
+          <li>
+            Time: <span>00:33</span>
+          </li>
+        </ul>
+        <Button onClick={startNewGame}>New Game</Button>
+      </Scoreboard>
+      <Gameboard />
     </StyledDashboard>
   );
 };

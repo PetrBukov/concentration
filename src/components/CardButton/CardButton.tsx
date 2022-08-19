@@ -3,17 +3,17 @@ import { Card, CardID } from '../../types/card';
 import { StyledCardButton } from './CardButton.style';
 
 type CardButtonProps = Pick<Card, 'front' | 'id'> & {
-  isActive: boolean;
+  isSelected: boolean;
   isResolved: boolean;
-  toggleCard: (cardID: CardID) => void;
+  selectCard: (cardID: CardID) => void;
 };
 
 export const CardButton: React.FC<CardButtonProps> = ({
   id,
   front,
-  isActive,
+  isSelected,
   isResolved,
-  toggleCard
+  selectCard
 }) => {
   if (isResolved) {
     return <div />;
@@ -21,9 +21,9 @@ export const CardButton: React.FC<CardButtonProps> = ({
 
   return (
     <StyledCardButton
-      className={isActive ? 'active' : ''}
+      className={isSelected ? 'selected' : ''}
       onClick={() => {
-        toggleCard(id);
+        selectCard(id);
       }}
     >
       <div className="flipper">

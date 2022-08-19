@@ -1,4 +1,4 @@
-import { Card, CardID, CardsList } from '../../../types/card';
+import { Card, CardID, CardsList } from '../types/card';
 
 export const transformCardsListToMap = (
   cardsList: CardsList

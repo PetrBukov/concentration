@@ -1,6 +1,6 @@
-import { CardsList } from '../../types/card';
+import { CardsList } from '../types/card';
 
-export const TEST_CARD_ARRAY: CardsList = [
+export const CARDS_LIST: CardsList = [
   {
     id: 'id_1',
     title: 'smilingFaceWithSunglasses',

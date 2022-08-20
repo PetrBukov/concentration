@@ -37,6 +37,28 @@ export const StyledCardButton = styled.button`
   }
   .back {
     background-color: var(--yellow);
+    background-image: repeating-linear-gradient(
+        135deg,
+        var(--white),
+        var(--white) 4px,
+        transparent 4px,
+        transparent 8px,
+        var(--white) 8px,
+        var(--white) 12px,
+        transparent 12px,
+        transparent 16px
+      ),
+      repeating-linear-gradient(
+        -135deg,
+        var(--white),
+        var(--white) 4px,
+        transparent 4px,
+        transparent 8px,
+        var(--white) 8px,
+        var(--white) 12px,
+        transparent 12px,
+        transparent 16px
+      );
     color: var(--violet);
     z-index: 2;
   }

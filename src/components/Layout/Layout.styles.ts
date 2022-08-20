@@ -29,6 +29,7 @@ export const globalStyles = css`
 
   html {
     box-sizing: border-box;
+    font-family: sans-serif;
   }
 
   *,

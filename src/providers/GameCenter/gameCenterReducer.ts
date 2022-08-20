@@ -1,5 +1,10 @@
 import { CARDS_LIST } from '../../consttants';
-import { doubleCardsList, transformCardsListToMap } from '../../utils';
+import { Card } from '../../types/card';
+import {
+  doubleCardsList,
+  shuffleArray,
+  transformCardsListToMap
+} from '../../utils';
 import { GameCenterAction, GameCenterState } from './GameCenter.types';
 
 export const gameCenterReducer = (
@@ -8,7 +13,13 @@ export const gameCenterReducer = (
 ): GameCenterState => {
   switch (action.type) {
     case 'createNewGame': {
-      const doubledCardsList = doubleCardsList(CARDS_LIST);
+      // To debug code while developing - manually set debugMode to "true" in the localStorage
+      const isDebugMode = Boolean(localStorage.getItem('debugMode'));
+
+      const doubledCardsList = isDebugMode
+        ? doubleCardsList(CARDS_LIST)
+        : shuffleArray<Card>(doubleCardsList(CARDS_LIST));
+
       return {
         ...state,
         currentGame: {

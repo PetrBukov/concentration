@@ -17,7 +17,8 @@ export const gameCenterReducer = (
           selectedCardIDs: new Set(),
           resolvedCardIDs: new Set(),
           movesCount: 0,
-          startDateMs: 0
+          startDateMs: Date.now(),
+          endDateMs: null
         }
       };
     }
@@ -51,6 +52,7 @@ export const gameCenterReducer = (
 
       const {
         currentGame: {
+          cardsList,
           cardsMap,
           selectedCardIDs: [cardID1, cardID2],
           resolvedCardIDs
@@ -63,13 +65,16 @@ export const gameCenterReducer = (
         ? new Set(resolvedCardIDs).add(cardID1).add(cardID2)
         : resolvedCardIDs;
 
+      const isGameRoundFinished = cardsList.length === newResolvedCards.size;
+
       return {
         ...state,
         currentGame: {
           ...state.currentGame,
           resolvedCardIDs: newResolvedCards,
           selectedCardIDs: new Set(),
-          movesCount: state.currentGame.movesCount + 1
+          movesCount: state.currentGame.movesCount + 1,
+          endDateMs: isGameRoundFinished ? Date.now() : null
         }
       };
     }

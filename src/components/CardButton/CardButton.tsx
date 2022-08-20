@@ -28,7 +28,7 @@ export const CardButton: React.FC<CardButtonProps> = ({
     >
       <div className="flipper">
         <div className="front">{front}</div>
-        <div className="back">wwwww</div>
+        <div className="back">x</div>
       </div>
     </StyledCardButton>
   );

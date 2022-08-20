@@ -7,4 +7,5 @@ export type Game = {
   selectedCardIDs: Set<CardID>;
   movesCount: number;
   startDateMs: number;
+  endDateMs: number | null;
 };

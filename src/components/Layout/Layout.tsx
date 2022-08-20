@@ -9,7 +9,7 @@ export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
     <GameCenter>
       <Global styles={globalStyles} />
       <StyledHeader>
-        <h1>Concentration - card game</h1>
+        <h1>Concentration</h1>
         <div>🌕</div>
       </StyledHeader>
       <StyledMain>{children}</StyledMain>

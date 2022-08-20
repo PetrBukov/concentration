@@ -1,4 +1,4 @@
-import { CARDS_LIST } from '../../consttants';
+import { CARDS_LIST } from '../../constants';
 import { Card } from '../../types/card';
 import {
   doubleCardsList,

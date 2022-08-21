@@ -21,10 +21,7 @@ export const Gameboard: React.FC = () => {
   );
 
   useEffect(() => {
-    console.log('effecct check', currentGame);
     if (currentGame && currentGame.selectedCardIDs.size === 2) {
-      console.log('effecct check inside');
-
       setTimeout(() => {
         dispatch({ type: 'checkCurrentGameTurn' });
       }, 1500);

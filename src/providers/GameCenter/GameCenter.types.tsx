@@ -1,5 +1,5 @@
 import { CardID } from '../../types/card';
-import { Game } from '../../types/game';
+import { Game, GameHistoryItem } from '../../types/game';
 
 export type GameCenterAction =
   | { type: 'createNewGame' }
@@ -10,5 +10,6 @@ export type GameCenterAction =
 export type GameCenterDispatch = (action: GameCenterAction) => void;
 
 export type GameCenterState = {
+  history: Array<GameHistoryItem>;
   currentGame: Game | null;
 };

@@ -9,3 +9,7 @@ export type Game = {
   startDateMs: number;
   endDateMs: number | null;
 };
+
+export type GameHistoryItem = Pick<Game, 'movesCount'> & {
+  gameTimeMs: number;
+};

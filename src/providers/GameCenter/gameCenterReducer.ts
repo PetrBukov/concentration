@@ -5,6 +5,7 @@ import {
   shuffleArray,
   transformCardsListToMap
 } from '../../utils';
+import { createGameHistoryItem } from '../../utils/createGameHistoryItem';
 import { GameCenterAction, GameCenterState } from './GameCenter.types';
 
 export const gameCenterReducer = (
@@ -20,8 +21,17 @@ export const gameCenterReducer = (
         ? doubleCardsList(CARDS_LIST)
         : shuffleArray<Card>(doubleCardsList(CARDS_LIST));
 
+      const { currentGame, history } = state;
+
+      const isCurrentGameFinished = Boolean(currentGame?.endDateMs);
+      const newHistory =
+        currentGame && isCurrentGameFinished
+          ? [...history, createGameHistoryItem(currentGame)]
+          : history;
+
       return {
         ...state,
+        history: newHistory,
         currentGame: {
           cardsList: doubledCardsList,
           cardsMap: transformCardsListToMap(doubledCardsList),

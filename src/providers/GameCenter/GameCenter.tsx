@@ -16,6 +16,7 @@ export const GameCenter: React.FC<PropsWithChildren> = ({ children }) => {
   const [state, dispatch] = React.useReducer<
     (state: GameCenterState, action: GameCenterAction) => GameCenterState
   >(gameCenterReducer, {
+    history: [],
     currentGame: null
   });
 

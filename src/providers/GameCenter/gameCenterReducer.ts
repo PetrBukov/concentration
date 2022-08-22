@@ -45,7 +45,6 @@ export const gameCenterReducer = (
     }
 
     case 'selectCard': {
-      console.log('selectCard', { state, action });
       if (!state.currentGame) {
         return state;
       }

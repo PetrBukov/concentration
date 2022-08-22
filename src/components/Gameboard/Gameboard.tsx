@@ -1,8 +1,13 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useMemo } from 'react';
+
 import { useGameCenter } from '../../providers';
-import { CardID } from '../../types/card';
-import { CardButton } from '../CardButton';
-import { StyledGameboard } from './Gameboard.styles';
+import {
+  GameOverInfo,
+  GameScoresList,
+  GameboardActions,
+  CardsList
+} from './components';
+import { GameboardContainer } from './Gameboard.styles';
 
 export const Gameboard: React.FC = () => {
   const {
@@ -10,42 +15,54 @@ export const Gameboard: React.FC = () => {
     dispatch
   } = useGameCenter();
 
-  const selectCard = useCallback(
-    (cardID: CardID) => {
-      dispatch({
-        type: 'selectCard',
-        cardID
-      });
-    },
-    [dispatch]
+  const isGameGoing = useMemo(
+    () => Boolean(currentGame && !currentGame.endDateMs),
+    [currentGame]
   );
 
-  useEffect(() => {
-    if (currentGame && currentGame.selectedCardIDs.size === 2) {
-      setTimeout(() => {
-        dispatch({ type: 'checkCurrentGameTurn' });
-      }, 1500);
-    }
-  }, [currentGame, dispatch]);
+  const movesCount = useMemo(() => currentGame?.movesCount, [currentGame]);
+  const startDateMs = useMemo(() => currentGame?.startDateMs, [currentGame]);
+  const endDateMs = useMemo(() => currentGame?.endDateMs, [currentGame]);
+  const gameTimeMs = useMemo(() => {
+    return endDateMs ? endDateMs - Number(startDateMs) : 0;
+  }, [endDateMs, startDateMs]);
 
-  if (!currentGame) {
-    return null;
-  }
+  const startNewGame = useCallback(() => {
+    dispatch({ type: 'createNewGame' });
+  }, [dispatch]);
 
-  const { cardsList, selectedCardIDs, resolvedCardIDs } = currentGame;
+  const cancelCurrentGame = useCallback(() => {
+    dispatch({ type: 'cancelCurrentGame' });
+  }, [dispatch]);
 
   return (
-    <StyledGameboard>
-      {cardsList.map((card) => (
-        <CardButton
-          key={card.id}
-          id={card.id}
-          isSelected={selectedCardIDs.has(card.id)}
-          isResolved={resolvedCardIDs.has(card.id)}
-          front={card.front}
-          selectCard={selectCard}
-        />
-      ))}
-    </StyledGameboard>
+    <GameboardContainer>
+      <GameboardActions
+        isGameGoing={isGameGoing}
+        startNewGame={startNewGame}
+        cancelCurrentGame={cancelCurrentGame}
+      />
+      {(function () {
+        if (isGameGoing) {
+          return <CardsList />;
+        }
+
+        if (currentGame) {
+          return (
+            <GameOverInfo
+              movesCount={currentGame.movesCount}
+              gameTimeMs={gameTimeMs}
+            />
+          );
+        }
+
+        return <div />;
+      })()}
+      <GameScoresList
+        movesCount={movesCount}
+        startDateMs={startDateMs}
+        endDateMs={endDateMs}
+      />
+    </GameboardContainer>
   );
 };

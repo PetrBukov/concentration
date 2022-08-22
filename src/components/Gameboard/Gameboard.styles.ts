@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 
-export const StyledGameboard = styled.div`
-  width: 100%;
-  height: 100%;
+export const GameboardContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-gap: 2px;
+  grid-template-rows: 50px 1fr 50px;
+  grid-gap: 32px;
+  max-height: 100%;
+  overflow: hidden;
 `;

@@ -6,6 +6,7 @@ export const Button = styled.button<{ variant?: 'contained' | 'outlined' }>`
   color: ${({ variant = 'contained' }) =>
     variant === 'outlined' ? 'var(--yellow)' : 'var(--violet)'};
   border: 1px solid var(--yellow);
+  text-transform: uppercase;
 
   &:disabled {
     filter: grayscale(1);

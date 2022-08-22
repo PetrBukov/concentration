@@ -1,4 +1,4 @@
 export { doubleCardsList } from './doubleCardsList';
 export { transformCardsListToMap } from './transformCardsListToMap';
-export { getPassedTime } from './getPassedTime';
+export { convertMilisecondsToString } from './convertMilisecondsToString';
 export { shuffleArray } from './shuffleArray';

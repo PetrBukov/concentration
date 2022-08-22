@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardID } from '../../types/card';
+import { Card, CardID } from '../../../../../../types/card';
 import { StyledCardButton } from './CardButton.style';
 
 type CardButtonProps = Pick<Card, 'front' | 'id'> & {

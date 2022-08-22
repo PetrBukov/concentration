@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { getPassedTime } from '../../utils';
+import { convertMilisecondsToString } from '../../utils';
 
 type TimerProps = {
   startDateMs?: number;
-  endDateMs: number | null;
+  endDateMs?: number | null;
 };
 
 export const Timer: React.FC<TimerProps> = ({ startDateMs, endDateMs }) => {
@@ -29,5 +29,5 @@ export const Timer: React.FC<TimerProps> = ({ startDateMs, endDateMs }) => {
     return <span>--:--</span>;
   }
 
-  return <span>{getPassedTime(timeSinceStarting)}</span>;
+  return <span>{convertMilisecondsToString(timeSinceStarting)}</span>;
 };

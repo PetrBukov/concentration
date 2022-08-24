@@ -1,12 +1,8 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { useGameCenter } from '../../providers';
-import {
-  GameOverInfo,
-  GameScoresList,
-  GameboardActions,
-  CardsList
-} from './components';
+import { GameScoresList, GameboardActions, CardsList } from './components';
 import { GameboardContainer } from './Gameboard.styles';
 
 export const Gameboard: React.FC = () => {
@@ -14,6 +10,7 @@ export const Gameboard: React.FC = () => {
     state: { currentGame },
     dispatch
   } = useGameCenter();
+  const navigate = useNavigate();
 
   const isGameGoing = useMemo(
     () => Boolean(currentGame && !currentGame.endDateMs),
@@ -23,9 +20,6 @@ export const Gameboard: React.FC = () => {
   const movesCount = useMemo(() => currentGame?.movesCount, [currentGame]);
   const startDateMs = useMemo(() => currentGame?.startDateMs, [currentGame]);
   const endDateMs = useMemo(() => currentGame?.endDateMs, [currentGame]);
-  const gameTimeMs = useMemo(() => {
-    return endDateMs ? endDateMs - Number(startDateMs) : 0;
-  }, [endDateMs, startDateMs]);
 
   const startNewGame = useCallback(() => {
     dispatch({ type: 'createNewGame' });
@@ -35,6 +29,14 @@ export const Gameboard: React.FC = () => {
     dispatch({ type: 'cancelCurrentGame' });
   }, [dispatch]);
 
+  useEffect(() => {
+    const isGameFinished = Boolean(currentGame && currentGame?.endDateMs);
+
+    if (isGameFinished) {
+      navigate('/game-over', { replace: true });
+    }
+  }, [currentGame, navigate]);
+
   return (
     <GameboardContainer>
       <GameboardActions
@@ -42,22 +44,7 @@ export const Gameboard: React.FC = () => {
         startNewGame={startNewGame}
         cancelCurrentGame={cancelCurrentGame}
       />
-      {(function () {
-        if (isGameGoing) {
-          return <CardsList />;
-        }
-
-        if (currentGame) {
-          return (
-            <GameOverInfo
-              movesCount={currentGame.movesCount}
-              gameTimeMs={gameTimeMs}
-            />
-          );
-        }
-
-        return <div />;
-      })()}
+      <CardsList />
       <GameScoresList
         movesCount={movesCount}
         startDateMs={startDateMs}

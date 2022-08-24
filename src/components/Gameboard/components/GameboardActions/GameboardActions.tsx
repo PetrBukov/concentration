@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '../../../Button';
+import { ButtonLink } from '../../../ButtonLink';
 import { GameboardActionsContainer } from './GameboardActions.styles';
 
 type GameboardActionsProps = {
@@ -15,16 +15,10 @@ export const GameboardActions: React.FC<GameboardActionsProps> = ({
 }) => {
   return (
     <GameboardActionsContainer>
-      <Button onClick={startNewGame} disabled={isGameGoing}>
-        New
-      </Button>
-      <Button
-        onClick={cancelCurrentGame}
-        disabled={!isGameGoing}
-        variant="outlined"
-      >
+      <ButtonLink to="/">← Menu</ButtonLink>
+      <ButtonLink to="/cancel-game" disabled={!isGameGoing} variant="outlined">
         Cancel
-      </Button>
+      </ButtonLink>
     </GameboardActionsContainer>
   );
 };

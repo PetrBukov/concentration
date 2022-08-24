@@ -1,10 +1,13 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { Dashboard, Layout } from './components';
 
 export const App: React.FC = () => {
   return (
-    <Layout>
-      <Dashboard />
-    </Layout>
+    <BrowserRouter>
+      <Layout>
+        <Dashboard />
+      </Layout>
+    </BrowserRouter>
   );
 };

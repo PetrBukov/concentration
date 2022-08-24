@@ -23,6 +23,7 @@ export const globalStyles = css`
     --black: #2e2e2e;
     --trueBlack: #000000;
     --violet: #543da4;
+    --spaceViolet: #463944;
     --yellow: #f7c845;
     --red: #ff4949;
   }
@@ -43,9 +44,9 @@ export const globalStyles = css`
   }
 
   #root {
-    min-height: 100vh;
+    height: 100vh;
+    max-height: 100vh;
     display: grid;
-    grid-template-rows: 56px 1fr;
   }
 
   /* Scrollbar Styles */
@@ -87,7 +88,7 @@ export const StyledHeader = styled.header`
 `;
 
 export const StyledMain = styled.main`
-  background: var(--trueBlack) url(${whitegrit});
+  background: var(--spaceViolet) url(${whitegrit});
   background-size: 500px;
   display: flex;
   align-items: center;

@@ -1,1 +1,0 @@
-export { GameOverInfo } from './GameOverInfo';

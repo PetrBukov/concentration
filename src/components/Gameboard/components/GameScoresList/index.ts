@@ -1,1 +1,0 @@
-export { GameScoresList } from './GameScoresList';

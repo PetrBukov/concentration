@@ -81,8 +81,6 @@ export const globalStyles = css`
 export const StyledMain = styled.main`
   background: var(--spaceViolet) url(${whitegrit});
   background-size: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
   padding: 12px 24px 38px 24px;
 `;

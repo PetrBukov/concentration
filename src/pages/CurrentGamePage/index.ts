@@ -1,0 +1,1 @@
+export { CurrentGamePage } from './CurrentGamePage';

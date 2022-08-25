@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
 
-import { useGameCenter } from '../../../../providers';
-import { CardID } from '../../../../types/card';
+import { useGameCenter } from '../../providers';
+import { CardID } from '../../types/card';
 import { CardsListContainer } from './CardsList.styles';
 import { CardButton } from './components';
 

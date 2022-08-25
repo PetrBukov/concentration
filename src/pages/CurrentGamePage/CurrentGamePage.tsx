@@ -1,8 +1,7 @@
-import React, { useCallback, useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ButtonLink, CardsList, Timer } from '../../components';
 import { useGameCenter } from '../../providers';
-import { convertMilisecondsToString } from '../../utils';
 import {
   GiCardExchange,
   GiSandsOfTime,

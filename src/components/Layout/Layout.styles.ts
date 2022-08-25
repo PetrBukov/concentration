@@ -3,12 +3,6 @@ import styled from '@emotion/styled';
 import whitegrit from '../../assets/images/whitegrit.png';
 
 export const globalStyles = css`
-  @font-face {
-    font-family: simpleStamp;
-    src: local('simpleStamp'),
-      url(../../assets/fonts/simpleStamp.otf) format('opentype');
-  }
-
   :root {
     --white: #ffffff;
     --gray100: #f4f7f9;

@@ -18,21 +18,7 @@ export const MainMenuPage: React.FC = () => {
     <MainMenuPageContainer>
       <div className="main-logo">🔭</div>
       <p className="main-title__prefix">Let's train your ...</p>
-      <h1 className="main-title">
-        <span className="main-title__letter main-title__letter-1">C</span>
-        <span className="main-title__letter main-title__letter-2">O</span>
-        <span className="main-title__letter main-title__letter-3">N</span>
-        <span className="main-title__letter main-title__letter-4">C</span>
-        <span className="main-title__letter main-title__letter-5">E</span>
-        <span className="main-title__letter main-title__letter-6">N</span>
-        <span className="main-title__letter main-title__letter-7">T</span>
-        <span className="main-title__letter main-title__letter-8">R</span>
-        <span className="main-title__letter main-title__letter-9">A</span>
-        <span className="main-title__letter main-title__letter-10">T</span>
-        <span className="main-title__letter main-title__letter-11">I</span>
-        <span className="main-title__letter main-title__letter-12">O</span>
-        <span className="main-title__letter main-title__letter-13">N</span>
-      </h1>
+      <h1 className="main-title">CONCENTRATION</h1>
       <p className="main-title__postfix">... with this awesome card game</p>
       <div className="main-menu">
         <ButtonLink

@@ -37,10 +37,27 @@ export const globalStyles = css`
     overscroll-behavior: none;
   }
 
+  html,
+  body,
   #root {
-    height: 100vh;
+    height: 100%;
     max-height: 100vh;
+    overflow: hidden;
+  }
+
+  #root {
     display: grid;
+  }
+
+  h1 {
+    font-family: 'simpleStamp', sans-serif;
+    font-size: 32px;
+    color: var(--yellow);
+    text-transform: uppercase;
+    letter-spacing: 6.5px;
+    transform: scaleY(1.3) translateY(2px);
+    text-align: center;
+    margin: 0;
   }
 
   /* Scrollbar Styles */
@@ -61,31 +78,11 @@ export const globalStyles = css`
   }
 `;
 
-export const StyledHeader = styled.header`
-  font-size: 24px;
-  height: 56px;
-  padding: 0px 32px;
-  background-color: var(--violet);
-  border-bottom: 5px solid var(--yellow);
-
-  display: grid;
-  justify-content: space-between;
-  align-items: center;
-  grid-auto-flow: column;
-
-  h1 {
-    color: var(--white);
-    font-family: 'simpleStamp', sans-serif;
-    margin: 0;
-    font-size: 24px;
-  }
-`;
-
 export const StyledMain = styled.main`
   background: var(--spaceViolet) url(${whitegrit});
   background-size: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 24px;
+  padding: 12px 24px 38px 24px;
 `;

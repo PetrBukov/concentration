@@ -8,15 +8,6 @@ export const MainMenuPageContainer = styled.div`
   align-items: center;
   align-content: center;
 
-  h1.main-title {
-    font-family: 'simpleStamp', sans-serif;
-    letter-spacing: 6.5px;
-    transform: scaleY(1.3);
-    text-align: center;
-    margin-bottom: 0;
-    margin-top: 5px;
-  }
-
   .main-title__postfix,
   .main-title__prefix {
     font-size: 14px;

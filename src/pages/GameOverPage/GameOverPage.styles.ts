@@ -38,17 +38,6 @@ export const GameOverPageContainer = styled.div`
   display: grid;
   align-items: center;
   justify-items: center;
-
-  h1 {
-    color: var(--yellow);
-    font-family: 'simpleStamp', sans-serif;
-    letter-spacing: 6.5px;
-    transform: scaleY(1.3) translateY(3px);
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 32px;
-    margin: 0;
-  }
 `;
 
 export const GameOverPageCardHeader = styled.div`

@@ -49,7 +49,7 @@ export const globalStyles = css`
     display: grid;
   }
 
-  h1 {
+  h1.page-title {
     font-family: 'simpleStamp', sans-serif;
     font-size: 32px;
     color: var(--yellow);

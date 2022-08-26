@@ -43,7 +43,7 @@ export const GameOverPage: React.FC = () => {
     <GameOverPageContainer>
       <GameOverPageCard>
         <GameOverPageCardHeader>
-          <h1>VICTORY</h1>
+          <h1 className="page-title">VICTORY</h1>
         </GameOverPageCardHeader>
         <GameOverPageCardContent>
           <GameOverPageCardScores>

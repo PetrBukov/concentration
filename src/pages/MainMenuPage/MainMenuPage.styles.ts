@@ -36,6 +36,7 @@ export const MainMenuPageContainer = styled.div`
     text-shadow: -0.04em 0.04em 0 rgba(0, 0, 0, 08);
     -webkit-text-stroke-width: 0.002em;
     -webkit-text-stroke-color: var(--yellow);
+    -webkit-text-stroke: 0.002em var(--yellow);
   }
   .main-title__name-letter {
     font-size: 1.5em;

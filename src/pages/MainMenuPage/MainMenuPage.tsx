@@ -22,9 +22,9 @@ export const MainMenuPage: React.FC = () => {
           <span className="main-title__name-letter E1">E</span>
           <span className="main-title__name-letter M2">M</span>
           <span className="main-title__name-letter O1">Ö</span>
-          <span className="main-title__name-letter O2">O</span>
-          <span className="main-title__name-letter R">R</span>
-          <span className="main-title__name-letter E2">E</span>
+          <span className="main-title__name-letter O2">R</span>
+          <span className="main-title__name-letter R">I</span>
+          <span className="main-title__name-letter E2">A</span>
         </div>
         <div className="main-title__subtitle">let's train your brain</div>
       </h1>

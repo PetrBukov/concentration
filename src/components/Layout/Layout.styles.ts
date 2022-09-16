@@ -82,5 +82,6 @@ export const StyledMain = styled.main`
   background: var(--spaceViolet) url(${whitegrit});
   background-size: 500px;
   display: grid;
+  justify-items: center;
   padding: 12px 24px 38px 24px;
 `;

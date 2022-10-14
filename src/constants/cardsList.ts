@@ -5,7 +5,7 @@ export const CARDS_LIST: CardsList = [
     id: 'id_1',
     title: 'smilingFaceWithSunglasses',
     front: '😎'
-  }
+  },
   {
     id: 'id_2',
     title: 'faceWithSymbolsOverMouth',

@@ -1,42 +1,41 @@
-import React, { useMemo } from 'react';
-import { Button } from '../../components';
-import { ButtonLink } from '../../components/ButtonLink';
-import { useGameCenter } from '../../providers';
+import React, { useCallback } from 'react';
+import { AiOutlinePlayCircle } from 'react-icons/ai';
 
-import { MainMenuPageContainer } from './MainMenuPage.styles';
+import {
+  CircleTextContainer,
+  MainMenuPageContainer,
+  MoonButtonContainer,
+  PlayButton,
+  PlayButtonContent,
+  PlayButtonIcon,
+  PlayButtonMoon
+} from './MainMenuPage.styles';
+import { CircleText } from '../../components';
+import { useNavigate } from 'react-router-dom';
 
 export const MainMenuPage: React.FC = () => {
-  const {
-    state: { currentGame }
-  } = useGameCenter();
+  const navigate = useNavigate();
 
-  const isGameGoinng = useMemo(() => {
-    return Boolean(currentGame && !currentGame.endDateMs);
-  }, [currentGame]);
+  const startNewGame = useCallback(
+    () => navigate('/new-game', { replace: true }),
+    [navigate]
+  );
 
   return (
     <MainMenuPageContainer>
-      <h1 className="main-title">
-        <div className="main-title__moon">🌕</div>
-        <div className="main-title__name">MEMÖRIA</div>
-      </h1>
-      <div className="main-menu">
-        <ButtonLink
-          to="/new-game"
-          variant={currentGame ? 'outlined' : 'contained'}
-        >
-          New Game
-        </ButtonLink>
-        <ButtonLink
-          to={isGameGoinng ? '/current-game' : '/'}
-          disabled={!isGameGoinng}
-        >
-          Continue Game
-        </ButtonLink>
-        <Button disabled>History</Button>
-        <Button disabled>Settings</Button>
-        <Button disabled>About</Button>
-      </div>
+      <MoonButtonContainer>
+        <CircleTextContainer>
+          <CircleText text="memory spacce" diameter={250} />
+        </CircleTextContainer>
+        <PlayButton type="button" onClick={startNewGame}>
+          <PlayButtonContent>
+            <PlayButtonMoon>🌕</PlayButtonMoon>
+            <PlayButtonIcon className="play-button__icon">
+              <AiOutlinePlayCircle />
+            </PlayButtonIcon>
+          </PlayButtonContent>
+        </PlayButton>
+      </MoonButtonContainer>
     </MainMenuPageContainer>
   );
 };

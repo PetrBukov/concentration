@@ -1,13 +1,36 @@
 import styled from '@emotion/styled';
+import { keyframes } from '@emotion/react';
+
+const rotateText = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+
+const rotateIcon = keyframes`
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+`;
 
 export const CircleTextContainer = styled.div`
+  transform: rotate(0deg);
   position: absolute;
   top: 50%;
   left: 50%;
+  animation: ${rotateText} 42s linear infinite;
 
   .circle-text__container {
     font-family: 'simpleStamp', sans-serif;
-    font-size: 42px;
+    font-size: 30px;
     text-transform: uppercase;
     color: white;
   }
@@ -20,7 +43,7 @@ export const CircleTextContainer = styled.div`
   }
 `;
 
-export const PlayButtonIcon = styled.div`
+export const PlayButtonIcon = styled.div<{ isGameLoading: boolean }>`
   transition: 0.2s;
   z-index: 4;
   position: absolute;
@@ -33,6 +56,9 @@ export const PlayButtonIcon = styled.div`
   justify-items: center;
   font-size: 80px;
   opacity: 0.4;
+
+  animation: ${rotateIcon} 1s linear infinite;
+  ${({ isGameLoading }) => !isGameLoading && 'animation: none;'}
 `;
 
 export const PlayButton = styled.button`
@@ -52,6 +78,7 @@ export const PlayButton = styled.button`
   width: 100px;
   height: 100px;
   overflow: hidden;
+  color: black;
 
   &:hover {
     transform: translate(-50%, -50%) scale(1.9);

@@ -3,24 +3,24 @@ import { CircleTextContainer, CircleTextChar } from './CircleText.styles';
 
 type CircleTextProps = {
   text: string;
-  diameter?: number;
+  radius?: number;
 };
 
 export const CircleText: React.FC<CircleTextProps> = ({
   text,
-  diameter = 100
+  radius = 100
 }) => {
   const phrase = text.split('');
   const phraseLetght = phrase.length;
 
   return (
-    <CircleTextContainer className="circle-text__container">
+    <CircleTextContainer className="circle-text__container" radius={radius}>
       {phrase.map((letter, index) => (
         <CircleTextChar
           key={`${letter}${index}`}
           charIndex={index + 1}
           charTotal={phraseLetght}
-          diameter={diameter}
+          radius={radius}
           className={`circle-text__char circle-text__char${index + 1}`}
         >
           {letter}

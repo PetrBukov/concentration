@@ -3,11 +3,11 @@ import { keyframes } from '@emotion/react';
 
 const rotateText = keyframes`
   0% {
-    transform: rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
   }
 
   100% {
-    transform: rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 `;
 
@@ -22,7 +22,7 @@ const rotateIcon = keyframes`
 `;
 
 export const CircleTextContainer = styled.div`
-  transform: rotate(0deg);
+  transform: translate(-50%, -50%) rotate(0deg);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -95,14 +95,14 @@ export const PlayButtonContent = styled.div`
   height: 100%;
 `;
 
-export const PlayButtonMoon = styled.div`
+export const PlayButtonMoon = styled.span`
   z-index: 3;
+  line-height: 1;
+  display: grid;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding-top: 5px;
-  padding-left: 1px;
 `;
 
 export const MainMenuPageContainer = styled.div`

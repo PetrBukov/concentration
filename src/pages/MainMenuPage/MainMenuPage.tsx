@@ -55,7 +55,7 @@ export const MainMenuPage: React.FC = () => {
     <MainMenuPageContainer>
       <MoonButtonContainer>
         <CircleTextContainer>
-          <CircleText text={circleTextValue} diameter={250} />
+          <CircleText text={circleTextValue} radius={142} />
         </CircleTextContainer>
         <PlayButton
           type="button"

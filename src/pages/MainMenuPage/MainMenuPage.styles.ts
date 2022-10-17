@@ -39,7 +39,8 @@ export const CircleTextContainer = styled.div`
     text-shadow: -1px -1px 0 var(--yellow), 1px -1px 0 var(--yellow),
       -1px 1px 0 var(--yellow), 1px 1px 0 var(--yellow),
       -0.06em 0.06em 0 rgba(0, 0, 0, 08);
-    color: var(--red);
+    color: white;
+    opacity: 0.9;
   }
 `;
 
